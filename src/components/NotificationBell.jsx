@@ -78,16 +78,21 @@ export default function NotificationBell() {
                         {notifications.length === 0 ? (
                             <div className="notification-empty">No tienes notificaciones</div>
                         ) : (
-                            notifications.slice(0, 20).map(n => (
-                                <div key={n.id} className={`notification-item ${n.read ? 'read' : 'unread'}`} onClick={() => !n.read && markRead(n.id)}>
-                                    <div className="notification-icon-wrap">{n.icon || '🔔'}</div>
-                                    <div className="notification-content">
-                                        <p className="notification-message">{n.message}</p>
-                                        <span className="notification-time">{timeAgo(n.createdAt)}</span>
+                            <>
+                                {notifications.slice(0, 5).map(n => (
+                                    <div key={n.id} className={`notification-item ${n.read ? 'read' : 'unread'}`} onClick={() => !n.read && markRead(n.id)}>
+                                        <div className="notification-icon-wrap">{n.icon || '🔔'}</div>
+                                        <div className="notification-content">
+                                            <p className="notification-message">{n.message}</p>
+                                            <span className="notification-time">{timeAgo(n.createdAt)}</span>
+                                        </div>
+                                        {!n.read && <div className="notification-dot"></div>}
                                     </div>
-                                    {!n.read && <div className="notification-dot"></div>}
+                                ))}
+                                <div className="view-all-notifs" onClick={() => { setOpen(false); window.location.href = '/client/notifications'; }}>
+                                    Ver todas las notificaciones
                                 </div>
-                            ))
+                            </>
                         )}
                     </div>
                 </div>
@@ -95,3 +100,4 @@ export default function NotificationBell() {
         </div>
     );
 }
+

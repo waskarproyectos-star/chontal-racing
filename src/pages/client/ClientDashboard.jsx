@@ -151,10 +151,12 @@ export default function ClientDashboard() {
                                         )}
                                     </div>
 
-                                    <div style={{ marginTop: '0.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                        <span className="btn-link">Ver detalles &rarr;</span>
+                                    <div style={{ marginTop: '0.75rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                        <button className="btn btn-sm btn-primary" onClick={(e) => { e.stopPropagation(); setSelectedOrder(order); }}>
+                                            Ver Detalles Completos
+                                        </button>
                                         {order.paymentStatus !== 'paid' && order.totalCost > 0 && (
-                                            <span className="text-danger" style={{ fontSize: '0.8rem', fontWeight: 'bold' }}>Pendiente: ${(order.totalCost - (order.payments?.reduce((s, p) => s + p.amount, 0) || 0)).toLocaleString()}</span>
+                                            <span className="text-danger" style={{ fontSize: '0.8rem', fontWeight: 'bold' }}>Debes: ${(order.totalCost - (order.payments?.reduce((s, p) => s + p.amount, 0) || 0)).toLocaleString()}</span>
                                         )}
                                     </div>
                                 </div>

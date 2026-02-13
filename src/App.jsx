@@ -28,6 +28,7 @@ import MyMotorcycles from './pages/client/MyMotorcycles';
 import MyBudgets from './pages/client/MyBudgets';
 import MyAppointments from './pages/client/MyAppointments';
 import ServiceCatalog from './pages/client/ServiceCatalog';
+import Notifications from './pages/client/Notifications';
 
 function HomeRedirect() {
   const { user, userProfile, loading } = useAuth();
@@ -85,6 +86,7 @@ export default function App() {
             <Route path="budgets" element={<MyBudgets />} />
             <Route path="appointments" element={<MyAppointments />} />
             <Route path="services" element={<ServiceCatalog />} />
+            <Route path="notifications" element={<Notifications />} />
           </Route>
 
           <Route path="*" element={<Navigate to="/" replace />} />
